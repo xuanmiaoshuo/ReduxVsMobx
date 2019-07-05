@@ -8,6 +8,7 @@ import { Provider, connect } from 'react-redux'
 // ①action types
 const COUNTER_ADD = 'counter_add'
 const COUNTER_DEC = 'counter_dec'
+const COUNTER_DOUBLE = 'counter_double'
 
 const initialState = { a: 0 }
 
@@ -18,6 +19,8 @@ function reducers(state = initialState, action) {
       return { ...state, a: state.a + 1 }
     case COUNTER_DEC:
       return { ...state, a: state.a - 1 }
+    case COUNTER_DOUBLE:
+      return { ...state, a: state.a * 2 }
     default:
       return state
   }
@@ -26,7 +29,8 @@ function reducers(state = initialState, action) {
 // ③action creator
 const incA = () => ({ type: COUNTER_ADD })
 const decA = () => ({ type: COUNTER_DEC })
-const Actions = { incA, decA }
+const double = () => ({ type: COUNTER_DOUBLE })
+const Actions = { incA, decA, double}
 
 class Demo extends Component {
   render() {
@@ -37,6 +41,7 @@ class Demo extends Component {
         <p>
           <button className="ui-btn" onClick={actions.incA}>增加 a</button>
           <button className="ui-btn" onClick={actions.decA}>减少 a</button>
+          <button className="ui-btn" onClick={actions.double}>加倍 a</button>
         </p>
       </div>
     )

@@ -23,6 +23,10 @@ class Actions {
   decA = () => {
     this.store.a--
   }
+  @action
+  double = () => {
+    this.store.a *= 2
+  }
 }
 
 // ③实例化单一数据源
@@ -43,6 +47,7 @@ class Demo extends Component {
         <p>
           <button className="ui-btn" onClick={actions.incA}>增加 a</button>
           <button className="ui-btn" onClick={actions.decA}>减少 a</button>
+          <button className="ui-btn" onClick={actions.double}>加倍 a</button>
         </p>
       </div>
     )
